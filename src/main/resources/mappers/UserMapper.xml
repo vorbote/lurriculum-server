@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.vorbote.curriculum.mappers.UserMapper">
+
+    <select id="login" parameterType="user" resultType="user">
+        select *
+        from user
+        where archived = 0
+          and (username = #{user.username} or (region = #{user.region} and phone = #{user.phone}) or
+               email = #{user.email})
+          and password = #{user.password};
+    </select>
+
+</mapper>

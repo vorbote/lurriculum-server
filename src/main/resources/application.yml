@@ -1,0 +1,26 @@
+spring:
+  profiles:
+    active: [db, redis, msgsender, jwt]
+
+vorbote:
+  web-dev:
+    cors:
+      enabled: true
+      allow-origin: '*'
+      allow-methods: [GET, POST, PUT, DELETE, OPTIONS]
+      allow-headers: [Content-Type, Authorization]
+      allow-credentials: true
+      expose-headers: [Authorization]
+
+mybatis-plus:
+  # 实体类包
+  type-aliases-package: cn.vorbote.curriculum.plains
+  configuration:
+    map-underscore-to-camel-case: true
+    auto-mapping-behavior: full
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:mappers/**.xml
+  global-config:
+    db-config:
+      logic-not-delete-value: 0
+      logic-delete-value: 1
